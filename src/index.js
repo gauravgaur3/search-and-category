@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import FilterState from "./context/FilterState";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+          <FilterState>
+            <App />
+          </FilterState>
   </React.StrictMode>
 );
 
