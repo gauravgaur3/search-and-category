@@ -1,5 +1,5 @@
 import React, { useContext, useState, useMemo } from "react";
-import filterContext from "./context/filterContext";
+import filterContext from "../context/filterContext";
 
 const Home = () => {
   const a = useContext(filterContext);
@@ -17,7 +17,7 @@ const Home = () => {
     return a.filter((item) => item.cat === selectedCategory);
   }
 
-  var filteredList = useMemo(getFilteredList, [selectedCategory, a]);
+  let filteredList = useMemo(getFilteredList, [selectedCategory, a]);
   return (
     <>
       <div className="container col-md-4 mt-3">
@@ -31,6 +31,7 @@ const Home = () => {
             onChange={(event) => setSelectedCategory(event.target.value)}
           />
         </div>
+
         <div className="mt-3 d-flex justify-content-evenly">
           <button
             type="button"

@@ -1,10 +1,11 @@
 import React,{useState,useEffect} from "react";
 import FilterContext from "./filterContext";
-import { imagesData } from "../data";
+import { imagesData } from "../component/data";
 
 
 const FilterState = (props) => {
    const [state, setState] = useState([])
+   
    useEffect(() => {
        setState(imagesData);
    }, [])
