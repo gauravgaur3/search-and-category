@@ -1,8 +1,12 @@
-import React, { useContext, useState, useMemo } from "react";
-import filterContext from "../context/filterContext";
+import React, { useEffect, useMemo, useState } from "react";
+import { imagesData } from "../component/data";
 
 const Home = () => {
-  const a = useContext(filterContext);
+
+  const [state, setState] = useState([]);
+  useEffect(() => {
+    setState(imagesData);
+  }, []);
 
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -12,12 +16,13 @@ const Home = () => {
 
   function getFilteredList() {
     if (!selectedCategory || selectedCategory === "all") {
-      return a;
+      return state;
     }
-    return a.filter((item) => item.cat === selectedCategory);
+    return state.filter((item) => item.cat === selectedCategory);
   }
 
-  let filteredList = useMemo(getFilteredList, [selectedCategory, a]);
+  let filteredList = useMemo(getFilteredList, [selectedCategory, state]);
+
   return (
     <>
       <div className="container col-md-4 mt-3">
@@ -29,6 +34,7 @@ const Home = () => {
             placeholder="Search"
             aria-label="Search"
             onChange={(event) => setSelectedCategory(event.target.value)}
+            data-testid="search-input"
           />
         </div>
 
@@ -81,10 +87,10 @@ const Home = () => {
         ) : (
           <div></div>
         )}
-        <div className="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3">
+        <div className="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3" >
           {filteredList.map((item, key) => (
             <div className="col" key={key}>
-              <img src={item.img} alt={item.cat} height="250" width="250" />
+              <img src={item.img} alt={item.cat} height="250" width="250" data-testid="search-result"/>
             </div>
           ))}
         </div>
