@@ -5,6 +5,11 @@ export const imagesData = [
       cat: "food",
     },
     {
+      id:5,
+      img: "images/pizza.jpg",
+      cat: "food",
+    },
+    {
       id:2,
       img: "images/taj.jpg",
       cat: "wonders",

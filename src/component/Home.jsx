@@ -89,8 +89,8 @@ const Home = () => {
         )}
         <div className="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3" >
           {filteredList.map((item, key) => (
-            <div className="col" key={key}>
-              <img src={item.img} alt={item.cat} height="250" width="250" data-testid="search-result"/>
+            <div className="col" key={key} data-testid="search-result">
+              <img src={item.img} alt={item.cat} height="250" width="250"  />
             </div>
           ))}
         </div>
